@@ -1,4 +1,4 @@
-List swap (List arr, pos_a, pos_b){
+List swap (pos_a, pos_b){
   
   var temp = arr[pos_a];
   arr[pos_a] = arr[pos_b];
@@ -16,11 +16,11 @@ int partition(List arr,int low,int high){
   for(int j=low ;j<=high-1;j++){
     if (arr[j] <= pivot){
       i++;
-      arr = swap(arr,i,j);
+      arr = swap(i,j);
     }
   }
-  swap(arr,i+1,high);
-  
+  swap(i+1,high);
+  print(arr);
   return i+1;
  
 }
