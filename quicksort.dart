@@ -1,14 +1,14 @@
-List swap (pos_a, pos_b){
+void Swap (pos_a, pos_b){
+  
+  String logging = arr[pos_a].toString() + ' and ' + arr[pos_b].toString();
+  print(logging);
   
   var temp = arr[pos_a];
   arr[pos_a] = arr[pos_b];
   arr[pos_b] = temp;
-  
-  return arr;
-  
 }
 
-int partition(List arr,int low,int high){
+int Partition(List arr,int low,int high){
   
   int i = low - 1;
   var pivot = arr[high];
@@ -16,37 +16,36 @@ int partition(List arr,int low,int high){
   for(int j=low ;j<=high-1;j++){
     if (arr[j] <= pivot){
       i++;
-      arr = swap(i,j);
+      Swap(i,j);
     }
   }
-  swap(i+1,high);
+  
+  Swap(i+1,high);
   print(arr);
   return i+1;
  
 }
 
-void quickSort(List arr,int low,int high){
+void SortingFunction(List arr,int low,int high){
   
   if(low < high){
     
-    var pi = partition(arr,low,high);
-    
-    quickSort(arr,low,pi-1);
-    quickSort(arr,pi+1,high);
+    var dividing_index= Partition(arr,low,high);
+        
+    SortingFunction(arr,low,dividing_index-1);
+    SortingFunction(arr,dividing_index+1,high);
 		
   }
 }
 
-List <int> arr = [10, 7, 8, 9, 1, 5];
+List <int> arr = [10, 80, 30, 90, 40, 50, 70];
 void main() {
-//  	List <int> arr = [10, 7, 8, 9, 1, 5];
-  
+
   int n = arr.length;
   
-  quickSort(arr,0,n-1);
+  //last element as pivot.
+  SortingFunction(arr,0,n-1);
   
   print('Sorted List:');
   print(arr);
-  
-  
 }
